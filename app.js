@@ -10,22 +10,26 @@ var jokesRouter = require('./routes/jokes');
 
 var app = express();
 
+//general setup
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+//setup static files
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-
+//include font awesome icons
 app.use('/fontawesome', express.static('./node_modules/@fortawesome/fontawesome-free'))
 
-
-app.engine('mustache', mustacheExpress(),'.mst');
+//setup mustache template engine
+app.engine('mustache', mustacheExpress());
 app.set('view engine', 'mustache');
 
 app.set('views', __dirname + '/views');
 
+//routes
 app.use('/', indexRouter);
 app.use('/api/joke', jokesRouter);
 

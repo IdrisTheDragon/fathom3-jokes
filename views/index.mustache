@@ -5,21 +5,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" sizes="192x192" href="/images/icon.jpg">
+    <link rel="icon" sizes="192x192" href="/fontawesome/svgs/regular/laugh-squint.svg">
     <title>{{ title }}</title>
     <link rel="stylesheet" href="stylesheets/style.css">
+    <script defer src="/fontawesome/js/all.js"></script>
     <script src="javascripts/joke.js"></script>
   </head>
     <div class="content">
         <header>
-            <h1>{{ title }}</h1>
+            <div id="laughing"><i  class="far fa-laugh-squint fa-2x"></i></div>
+            <h1>{{ title }} </h1>
         </header>
         <section>
-          <p id="setup"></p>
-          <p id=punchline></p>
+          <div id="door-closed"><i class="fas fa-door-closed fa-2x"></i></div>
+          <div id="door-open"><i class="fas fa-door-open fa-2x"></i></div>
+          <div id="code"><i class="fas fa-code fa-2x"></i></div>
+          <div id="terminal"><i class="fas fa-terminal fa-2x"></i></div>
+          <div id="smile-beam"><i class="fas fa-smile-beam fa-2x"></i></div>
+          <div id="laugh-beam"><i class="fas fa-laugh-beam fa-2x"></i></div>
+          <p id="setup">Joke Setup</p>
+          <p id=punchline>Joke Punchline</p>
           <div class="center">
-            <button id="punchlineBtn" onclick="revealPunchline()">Reveal</button>
-          <button id="nextBtn" onclick="nextJoke()">Next</button>
+          <button id="punchlineBtn" onclick="revealPunchline()">Reveal <i class="far fa-calculator"></i></button>
+          <button id="nextBtn" onclick="nextJoke()">Next <i class="fas fa-dice"></i></button>
           </div>
           
           <script>nextJoke()</script>

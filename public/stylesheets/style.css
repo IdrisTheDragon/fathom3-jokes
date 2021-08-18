@@ -1,12 +1,12 @@
 body {
-  font: 1.5em "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 1.9em "Lucida Grande", Helvetica, Arial, sans-serif;
   color: aliceblue;
   background-color: rgb(32, 32, 32);
 }
 
 .content {
   background-color:rgb(25, 25, 25) ;
-  max-width: 500px;
+  max-width: 60%;
   margin: 15% auto auto auto;
 }
 
@@ -16,6 +16,7 @@ a {
 
 header {
   padding:1%;
+  text-align: center;
   background-color: dodgerblue;
 }
 
@@ -26,16 +27,69 @@ header {
 
 section{
   padding:1%;
+  text-align: center;
   padding-bottom: 5%;
+}
+
+#punchline {
+  animation-name: colour-change;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
 }
 
 button {
   width: max-content;
   height: max-content;
   padding: 1%;
-  font-size: medium;
+  font-size: larger;
   text-align: center;
   background-color: dodgerblue;
   color: aliceblue;
   border: none;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+#laughing {
+  animation: roll 1000ms linear infinite, move 5s linear infinite;
+  width: fit-content;
+  display: block;
+  position: absolute;
+  left: 0;
+}
+
+
+@keyframes roll {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg)}
+}
+
+@keyframes move {
+  from {left: -100px;}
+  to {left:100%}
+}
+
+ @keyframes colour-change {
+  0% {color: red;}
+  50% {color: dodgerblue;}
+  100% {color: red;}
+}
+
+
+/* for mobile */
+@media only screen and (max-width: 600px) {
+  button{
+    padding:3%;
+  }
+
+  .content {
+    max-width: 98%;
+  }
+
+  section{
+    padding-bottom: 20%;
+  }
+
 }

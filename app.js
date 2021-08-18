@@ -17,6 +17,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+
+app.use('/fontawesome', express.static('./node_modules/@fortawesome/fontawesome-free'))
+
+
 app.engine('mustache', mustacheExpress(),'.mst');
 app.set('view engine', 'mustache');
 

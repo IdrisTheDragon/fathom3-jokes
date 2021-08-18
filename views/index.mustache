@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" sizes="192x192" href="/images/icon.jpg">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="javascripts/joke.js"></script>
+  </head>
+    <div class="content">
+        <header>
+            <h1>{{ title }}</h1>
+        </header>
+        <section>
+          <p id="setup"></p>
+          <p id=punchline></p>
+          <div class="center">
+            <button id="punchlineBtn" onclick="revealPunchline()">Reveal</button>
+          <button id="nextBtn" onclick="nextJoke()">Next</button>
+          </div>
+          
+          <script>nextJoke()</script>
+        </section>
+    </div>
+  </body>
+</html>

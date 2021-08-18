@@ -1,0 +1,97 @@
+#!/usr/bin/env node
+
+var sqlite3 = require('sqlite3').verbose()
+var db = new sqlite3.Database('jokes-database.db')
+const https = require('https')
+
+
+// drop old table and setup new table
+db.serialize(function () {
+  db.run('DROP TABLE jokes')
+  db.run('CREATE TABLE jokes (id NUMBER, type TEXT, setup TEXT, punchline TEXT)')
+})
+
+
+// Prepare https request options
+const options = {
+  hostname: 'raw.githubusercontent.com',
+  port: 443,
+  path: '/15Dkatz/official_joke_api/master/jokes/index.json',
+  method: 'GET'
+}
+
+// Prepare https request callback
+var callback = function(response) {
+  
+  // store for received data
+  var str = '';
+
+  // append partial data to str
+  response.on('data', function (chunk) {
+    str += chunk;
+  });
+
+  // end of response
+  response.on('end', function () {
+
+    // check status
+    console.log(`statusCode: ${response.statusCode}`)
+    if(response.statusCode != 200){
+      console.log("Wrong status code. Aborting")
+      return
+    }
+    
+    //parse the json
+    //console.log(str);
+    const obj = JSON.parse(str);
+    //console.log(obj)
+  
+    // prepare sql statement
+    var stmt = db.prepare("INSERT INTO jokes VALUES (?,?,?,?)");
+
+    // save jokes to db
+    console.log("Saving jokes to db")
+    for (var x in obj) {
+      //console.log(obj[x].type)
+      stmt.run(obj[x].id,obj[x].type,obj[x].setup,obj[x].punchline,(err) => {
+        if (err) {
+            return console.error(err.message);
+        }
+      });
+    }
+    stmt.finalize();
+    console.log("Saved jokes to db")
+
+
+    //print jokes
+    // db.serialize(() => {
+    //   db.each(`SELECT id as id, type as type, setup as setup, punchline as punchline FROM jokes`, (err, row) => {
+    //     if (err) {
+    //     console.error(err.message);
+    //     }
+    //     console.log(row)
+    //   });
+    // });
+
+
+    //close the db
+    db.close((err) => {
+      if (err) {
+          return console.error(err.message);
+      }
+      console.log('Closed the database connection.');
+    });
+  });
+}
+
+console.log("Fetching data")
+const req = https.request(options, callback)
+
+req.on('error', error => {
+  console.error(error)
+})
+
+req.end()
+
+
+

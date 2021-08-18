@@ -1,0 +1,41 @@
+body {
+  font: 1.5em "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: aliceblue;
+  background-color: rgb(32, 32, 32);
+}
+
+.content {
+  background-color:rgb(25, 25, 25) ;
+  max-width: 500px;
+  margin: 15% auto auto auto;
+}
+
+a {
+  color: #00B7FF;
+}
+
+header {
+  padding:1%;
+  background-color: dodgerblue;
+}
+
+.center {
+  margin: auto;
+  text-align: center;
+}
+
+section{
+  padding:1%;
+  padding-bottom: 5%;
+}
+
+button {
+  width: max-content;
+  height: max-content;
+  padding: 1%;
+  font-size: medium;
+  text-align: center;
+  background-color: dodgerblue;
+  color: aliceblue;
+  border: none;
+}

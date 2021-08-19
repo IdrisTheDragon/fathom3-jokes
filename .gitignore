@@ -28,3 +28,4 @@ benchmarks/graphs
 
 #db file
 jokes-database.db
+jokes-database.db.backup

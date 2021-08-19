@@ -8,6 +8,8 @@ A full stack application to store and present the jokes from [https://github.com
 - Node v12.18.2+
 - NPM 7.20.6+
 
+## Install
+
 1. Install Node.Js dependencies: `npm install`
 2. Import jokes into an SQLite DB from source repository `npm run import`
 

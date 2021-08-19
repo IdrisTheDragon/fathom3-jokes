@@ -14,8 +14,12 @@ A full stack application to store and present the jokes from [https://github.com
 2. Import jokes into an SQLite DB from source repository `npm run import`
 
 ### Run
-2. `npm run start` 
-3. Access at: [http://localhost:3000/](http://localhost:3000/)
+1. `npm start` 
+2. Access at: [http://localhost:3000/](http://localhost:3000/)
+
+### Testing
+1. `npm test` 
+
 
 
 ## Project Structure
@@ -31,3 +35,4 @@ Based on a express-generator project template, replacing the default jade/pug te
 - `/public` Contains public assets such as javascript and css for the UI
 - `/modules` Contains modules written for the project e.g database handler
 - `/bin` Contains the entry point scripts. 
+- `/test` Contains testfiles to test the project.
